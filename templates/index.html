@@ -1,0 +1,25 @@
+<h1> Twittle </h1>
+
+{% if 'username' in session%}
+You are logged in as {{session['username']}}
+<a href = "/logout"> Log out </a>
+{% else %}
+<a href = "/login"> Log in</a>
+{% endif %}
+
+<a href ="/set_picture"> Set profile picture </a>
+
+<h2> Posts </h2>
+
+<ul>
+  {% for post in posts %}
+    <li> <b>{{post['username']}}: </b> {{post['message']}}</li>
+    {% endfor %}
+</ul>
+
+What is your status?
+
+<form action="/create_post" method="post">
+  <input type="text" name="message">
+  <input type="submit">
+</form>
