@@ -1,7 +1,9 @@
-<h1> Twittle </h1>
+<link rel = "stylesheet" type = "text/css" href="/static/mainpage.css"/>
+
+<h1> Gaymer </h1>
 
 {% if 'username' in session%}
-You are logged in as {{session['username']}}
+{{session['username']}} is game!!!
 <a href = "/logout"> Log out </a>
 {% else %}
 <a href = "/login"> Log in</a>
