@@ -12,6 +12,10 @@ def index():
         return redirect('/login')
     return render_template('mainpage.html', posts=db['posts'])
 
+@app.route('/settings')
+def setting():
+    return render_template('settings.html')
+
 @app.route('/login')
 def login():
     return render_template('login.html')
