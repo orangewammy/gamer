@@ -1,0 +1,19 @@
+1) Follow the "creating accounts" tutorial: https://www.youtube.com/watch?v=2liJsHOJcfw&list=PLtV8GdR6k9t9tBuHS8CP2d356Qjc1vbeP&index=16
+2) Add extra <input> elements (instead of just username and password)
+  You can add radio buttons using <input type="radio"> -- see example: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio
+
+3) Inside your create_account_post function, try doing print(request.form)
+  --Can you tell which radio button the user has clicked?
+
+4) Change the user dictionary within the create_account_post function, so that it ALSO saves their favourite genre etc
+ (ie: so it saves the answers to each radio button group)
+
+
+
+
+
+
+5) Look at your code for the index function (the home page).
+  Notice how it prints all the posts?
+  Now, make ANOTHER function in ANOTHER app.route that prints all the USERS
+  Tip: You will need to make another template, like mainpage.html
