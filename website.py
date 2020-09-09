@@ -34,6 +34,10 @@ def login_post():
     session["username"]= (request.form["username"])
     return redirect('/')
 
+@app.route('/chatroom')
+def chatroom():
+    return render_template('chatroom')
+
 @app.route('/create_post', methods=['post'])
 def create_post():
     post_dictonarty = {
