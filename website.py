@@ -32,11 +32,11 @@ def set_picture():
 @app.route('/login_post', methods=['post'])
 def login_post():
     session["username"]= (request.form["username"])
-    return redirect('/')
+    return redirect('/chatroom')
 
 @app.route('/chatroom')
 def chatroom():
-    return render_template('chatroom')
+    return render_template('chatroom.html')
 
 @app.route('/create_post', methods=['post'])
 def create_post():
@@ -47,6 +47,6 @@ def create_post():
 
     db['posts'].insert(post_dictonarty)
 
-    return redirect('/')
+    return redirect('/chatroom')
 
 app.run(debug=True)

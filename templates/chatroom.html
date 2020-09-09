@@ -1,1 +1,22 @@
-<h1> Welcome Fellow Gaymer </h1>
+<link rel = "stylesheet" type = "text/css" href="/static/mainpage.css"/>
+<h1> Welcome to our LOVEly Chatroom Fellow Gaymer </h1>
+
+
+
+<h3> Game on!! </h3>
+
+<ul>
+  {% for post in posts %}
+    <li> <b>{{post['username']}}: </b> {{post['message']}}</li>
+    {% endfor %}
+</ul>
+
+Message?
+
+<form action="/create_post" method="post">
+  <input type="text" name="message">
+  <input type="submit">
+</form>
+
+
+<a href = "/"> Mainpage </a>

@@ -10,22 +10,9 @@
 <a href "navbar" = "/login" > Log in</a>
 {% endif %}
 
+<a href = "/chatroom"> Chatroom </a>
+
 <a href ="/set_picture"> Set profile picture </a>
 <a href="/settings"> Settings </a>
 
 <h2/>
-
-<h3> Posts </h3>
-
-<ul>
-  {% for post in posts %}
-    <li> <b>{{post['username']}}: </b> {{post['message']}}</li>
-    {% endfor %}
-</ul>
-
-What is your status?
-
-<form action="/create_post" method="post">
-  <input type="text" name="message">
-  <input type="submit">
-</form>
