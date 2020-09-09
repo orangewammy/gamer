@@ -3,14 +3,17 @@
 <h1> Welcome Fellow Gaymer </h1>
 
 {% if 'username' in session%}
-<h2 > {{session['username']}} is game!!! <h2/>
-<a href class = "navbar"= "/logout"> Log out </a>
+<h3 > {{session['username']}} is game!!! <h3/>
+<h2>
+<a href = "/logout"> Log out </a>
 {% else %}
-<a href class = "navbar" = "/login" > Log in</a>
+<a href "navbar" = "/login" > Log in</a>
 {% endif %}
 
 <a href ="/set_picture"> Set profile picture </a>
-<a class = "navbar" href="/settings"> Settings </a>
+<a href="/settings"> Settings </a>
+
+<h2/>
 
 <h3> Posts </h3>
 

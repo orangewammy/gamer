@@ -34,11 +34,12 @@ color: #D67AB1;
 font-size: 24;
 text-align:center;
 font-weight: bold;
+background-color: #A8DCD9;
 
 }
 }
 a{
-border: solid;
+border: solid 4px;
 padding: 12px;
-
+color: black;
 }
