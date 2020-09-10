@@ -3,7 +3,7 @@ import dataset
 
 app = Flask(__name__)
 
-db=dataset.connect('sqlite:///twittle.db')
+db=dataset.connect('sqlite:///gaymer.db')
 app.secret_key = "dr72oi1sadadw2dqqdwwddq"
 
 @app.route('/')
