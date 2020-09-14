@@ -26,22 +26,42 @@ def logout():
 def set_picture():
     return render_template('set_picture.html')
 
-
-
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+@app.route('/create_account')
+def create_account_get():
+    return render template('create_account.html')
+
+@app.route('/create_account_post', methods=['post'])
+def create_account_get():
+    user = {
+
+    'username' : request.form['username'],
+    'password' : request.form['password']
+
+    }
 
 @app.route('/login', methods=['POST'])
+
+typed_username = request.form['username']
+typed_password = request.form['password']
+
 def login_post():
     username = request.form.get('username')
     password = request.form.get('password')
-    if username == 'Test' and password == '1':
-        session['username'] = 'admin'
-        return render_template('mainpage.html')
-    else:
-        return render_template('login.html')
+    username = db['users'].find_one(username=typed_username)
+    password = user['password']
+
+
+
+    if password = typed_password:
+        session['username'] = request.form['username']
+        return redirect('/')
+
+    return"Invalid password!!"
+
 
 
 
@@ -50,7 +70,7 @@ def login_post():
 @app.route('/chatroom')
 def chatroom():
     if 'username' not in session:
-        return redirect('/Login')
+        return redirect('/login')
     else:
         return render_template('chatroom.html')
 

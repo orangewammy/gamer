@@ -4,6 +4,7 @@
 
 {% if 'username' in session%}
 <h3 > {{session['username']}} is game!!! <h3/>
+
 <h2>
 <a href = "/logout"> Log out </a>
 {% else %}
@@ -14,5 +15,4 @@
 
 <a href ="/set_picture"> Set profile picture </a>
 <a href="/settings"> Settings </a>
-
 <h2/>
