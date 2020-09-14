@@ -16,9 +16,6 @@ def index():
 def setting():
     return render_template('settings.html')
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
 
 @app.route('/logout')
 def logout():
@@ -29,14 +26,34 @@ def logout():
 def set_picture():
     return render_template('set_picture.html')
 
-@app.route('/login_post', methods=['post'])
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+
+@app.route('/login', methods=['POST'])
 def login_post():
-    session["username"]= (request.form["username"])
-    return redirect('/chatroom')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username == 'Test' and password == '1':
+        session['username'] = 'admin'
+        return render_template('mainpage.html')
+    else:
+        return render_template('Incorrect.html')
+
+
+
+
 
 @app.route('/chatroom')
 def chatroom():
-    return render_template('chatroom.html')
+    if 'username' not in session:
+        return redirect('/Login')
+    else:
+        return render_template('chatroom.html')
+
 
 @app.route('/create_post', methods=['post'])
 def create_post():
