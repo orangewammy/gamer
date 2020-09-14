@@ -41,7 +41,7 @@ def login_post():
         session['username'] = 'admin'
         return render_template('mainpage.html')
     else:
-        return render_template('Incorrect.html')
+        return render_template('login.html')
 
 
 
