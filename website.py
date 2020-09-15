@@ -32,31 +32,34 @@ def login():
 
 @app.route('/create_account')
 def create_account_get():
-    return render template('create_account.html')
+    return render_template('create_account.html')
 
 @app.route('/create_account_post', methods=['post'])
-def create_account_get():
+def create_account_post():
     user = {
 
     'username' : request.form['username'],
     'password' : request.form['password']
 
     }
+    db['users'].insert(user)
+
+    return redirect('/login')
+
 
 @app.route('/login', methods=['POST'])
-
-typed_username = request.form['username']
-typed_password = request.form['password']
-
 def login_post():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    username = db['users'].find_one(username=typed_username)
+    typed_username = request.form.get('username')
+    typed_password = request.form.get('password')
+    print('typed_username', typed_username)
+    user = db['users'].find_one(username=typed_username)
+    if user is None:
+        return redirect('/login')
     password = user['password']
 
 
 
-    if password = typed_password:
+    if password == typed_password:
         session['username'] = request.form['username']
         return redirect('/')
 
