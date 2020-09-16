@@ -36,11 +36,13 @@ def create_account_get():
 
 @app.route('/create_account_post', methods=['post'])
 def create_account_post():
+    print(request.form)
     user = {
 
     'username' : request.form['username'],
-    'password' : request.form['password']
-    
+    'password' : request.form['password'],
+    'genre'    : request.form['genre']
+
     }
     db['users'].insert(user)
 
@@ -51,6 +53,7 @@ def create_account_post():
 def login_post():
     typed_username = request.form.get('username')
     typed_password = request.form.get('password')
+    genre = request.form.get('genre')
     print('typed_username', typed_username)
     user = db['users'].find_one(username=typed_username)
     if user is None:
