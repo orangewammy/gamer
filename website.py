@@ -40,7 +40,7 @@ def create_account_post():
 
     'username' : request.form['username'],
     'password' : request.form['password']
-
+    
     }
     db['users'].insert(user)
 
