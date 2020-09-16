@@ -41,7 +41,10 @@ def create_account_post():
 
     'username' : request.form['username'],
     'password' : request.form['password'],
-    'genre'    : request.form['genre']
+    'genre'    : request.form['genre'],
+    'sexuality': request.form['sexuality'],
+    'sport': request.form['sport'],
+    'bio':request.form['bio']
 
     }
     db['users'].insert(user)
