@@ -10,7 +10,7 @@ app.secret_key = "dr72oi1sadadw2dqqdwwddq"
 def index():
     if 'username' not in session:
         return redirect('/login')
-    return render_template('mainpage.html', posts=db['posts'])
+    return render_template('mainpage.html')
 
 @app.route('/settings')
 def setting():
@@ -25,6 +25,16 @@ def logout():
 @app.route('/set_picture')
 def set_picture():
     return render_template('set_picture.html')
+
+@app.route('/set_picture_post', methods=['post'])
+def set_picture_post():
+    file = request.files['file']
+    file_to_save = 'static/uploads/' + file.filename
+    file.save(file_to_save)
+
+    session['profile_picture_url'] = file_to_save
+
+    return redirect('/')
 
 @app.route('/login')
 def login():
@@ -45,7 +55,7 @@ def create_account_post():
     'sexuality': request.form['sexuality'],
     'sport': request.form['sport'],
     'bio':request.form['bio'],
-    'gender': request.form['gender']
+    'gender': request.form['gender'],
 
     }
     db['users'].insert(user)
@@ -74,22 +84,20 @@ def login_post():
 
 
 
-
-
-
 @app.route('/chatroom')
 def chatroom():
     if 'username' not in session:
         return redirect('/login')
     else:
-        return render_template('chatroom.html')
+        return render_template('chatroom.html', posts=db['posts'])
 
 
 @app.route('/create_post', methods=['post'])
 def create_post():
     post_dictonarty = {
         'message' : request.form['message'],
-        'username' : session['username']
+        'username' : session['username'],
+        'picture' : session['profile_picture_url']
     }
 
     db['posts'].insert(post_dictonarty)

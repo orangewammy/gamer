@@ -1,4 +1,12 @@
 <link rel = "stylesheet" type = "text/css" href="/static/mainpage.css"/>
+
+<style>
+  .profile_image {
+
+    width: 40px;
+
+  }
+</style>
 <h1> Welcome to our LOVEly Chatroom Fellow Gaymer </h1>
 
 
@@ -8,6 +16,9 @@
 <ul>
   {% for post in posts %}
     <li> <b>{{post['username']}}: </b> {{post['message']}}</li>
+
+    <img src = "{{post['picture']}}" class="profile_image"
+
     {% endfor %}
 </ul>
 
