@@ -1,7 +1,29 @@
 <link rel = "stylesheet" type = "text/css" href="/static/mainpage.css"/>
 
 <h1>
-  Settings
+  All Users
   <h1/>
+
+<br>
+
+
+
+
+<ul>
+  <div id="user_settings">
+    {%for i in text%}
+      <p>Username: {{i.username}}</p>
+      <p>Bio: {{i.bio}}</p>
+      <p>Gender: {{i.Gender}}</p>
+      <p>Sexuality: {{i.Sexuality}}</p>
+      <p>Sport: {{i.Sport}}</p>
+      <img src="{{image}}"></img>
+      <br>
+    {% endfor %}
+</div>
+</ul>
+
+
+
 
 <a href = "/"> Mainpage </a>

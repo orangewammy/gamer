@@ -12,10 +12,6 @@ def index():
         return redirect('/login')
     return render_template('mainpage.html')
 
-@app.route('/settings')
-def setting():
-    return render_template('settings.html')
-
 
 @app.route('/logout')
 def logout():
@@ -58,6 +54,7 @@ def create_account_post():
     'gender': request.form['gender'],
 
     }
+
     db['users'].insert(user)
 
     return redirect('/login')
@@ -103,5 +100,11 @@ def create_post():
     db['posts'].insert(post_dictonarty)
 
     return redirect('/chatroom')
+
+@app.route('/settings')
+def setting():
+    user = db['users']
+    image = session['profile_picture_url']
+    return render_template('settings.html',text=user, image=image)
 
 app.run(debug=True)

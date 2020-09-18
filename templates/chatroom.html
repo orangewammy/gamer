@@ -13,14 +13,7 @@
 
 <h3> Game on!! </h3>
 
-<ul>
-  {% for post in posts %}
-    <li> <b>{{post['username']}}: </b> {{post['message']}}</li>
 
-    <img src = "{{post['picture']}}" class="profile_image"
-
-    {% endfor %}
-</ul>
 
 Message?
 
@@ -29,5 +22,17 @@ Message?
   <input type="submit">
 </form>
 
+<br>
+
+
+<ul>
+  {% for post in posts %}
+    <li> <b>{{post['username']}}: </b> {{post['message']}}</li>
+
+    <img src = "{{post['picture']}}" class="profile_image"
+    <br>
+    {% endfor %}
+    
+</ul>
 
 <a href = "/"> Mainpage </a>
