@@ -70,15 +70,11 @@ def login_post():
     if user is None:
         return redirect('/login')
     password = user['password']
-
-
-
     if password == typed_password:
         session['username'] = request.form['username']
         return redirect('/')
 
     return"Invalid password!!"
-
 
 
 @app.route('/chatroom')
@@ -91,10 +87,16 @@ def chatroom():
 
 @app.route('/create_post', methods=['post'])
 def create_post():
+
+    try:
+        picture = session['profile_picture_url']
+    except KeyError:
+        picture = 'static/default.jpg'
+
     post_dictonarty = {
         'message' : request.form['message'],
         'username' : session['username'],
-        'picture' : session['profile_picture_url']
+        'picture'  : picture
     }
 
     db['posts'].insert(post_dictonarty)
@@ -104,7 +106,11 @@ def create_post():
 @app.route('/settings')
 def setting():
     user = db['users']
-    image = session['profile_picture_url']
+    try:
+        image = session['profile_picture_url']
+    except KeyError:
+        image = 'static/default.jpg'
+
     return render_template('settings.html',text=user, image=image)
 
 app.run(debug=True)
